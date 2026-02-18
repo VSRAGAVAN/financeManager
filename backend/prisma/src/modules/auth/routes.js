@@ -1,0 +1,10 @@
+const router = require("express").Router();
+const controller = require("./controller");
+
+router.post("/register", controller.register);
+
+module.exports = router;
+
+router.post("/login", controller.login);
+
+module.exports = router;

@@ -1,0 +1,145 @@
+.support-page {
+    padding: 20px;
+}
+
+.support-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.support-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.support-section {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.platform-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.platform-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background: var(--bg-main);
+    border-radius: 16px;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.platform-card:hover {
+    border-color: var(--primary);
+    background: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.1);
+}
+
+.platform-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.platform-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--white);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.platform-details h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.platform-details p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.download-badge {
+    padding: 8px 16px;
+    background: var(--primary);
+    color: white;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.social-link-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    border-radius: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+    background: var(--bg-main);
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.social-link-btn:hover {
+    background: white;
+    transform: translateX(4px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.social-link-btn.instagram:hover {
+    color: #E1306C;
+}
+
+.social-link-btn.whatsapp:hover {
+    color: #25D366;
+}
+
+.social-link-btn.mail:hover {
+    color: #EA4335;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

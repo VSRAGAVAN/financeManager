@@ -1,0 +1,137 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  engineType = "library"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Company {
+  id        Int      @id @default(autoincrement())
+  name      String
+  plan      String   @default("FREE")
+  gstNumber String?
+  gstEnabled Boolean  @default(false)
+  users     User[]
+  incomes   Income[]
+  expenses  Expense[]
+  loans     Loan[]
+  recurring     RecurringTransaction[]
+  bills         BillReminder[]
+  savingsDeposits SavingsDeposit[]
+  createdAt DateTime @default(now())
+}
+
+model User {
+  id              Int              @id @default(autoincrement())
+  name            String?
+  email           String           @unique
+  password        String
+  role            Role             @default(STAFF)
+  company         Company          @relation(fields: [companyId], references: [id])
+  companyId       Int
+  savingsDeposits SavingsDeposit[]
+  createdAt       DateTime         @default(now())
+}
+
+model SavingsDeposit {
+  id              Int           @id @default(autoincrement())
+  principal       Float
+  interestRate    Float         @default(12.0)
+  durationMonths  Int           // 6 or 12
+  status          SavingsStatus @default(PENDING)
+  interestAmount  Float
+  totalAmount     Float
+  user            User          @relation(fields: [userId], references: [id])
+  userId          Int
+  company         Company       @relation(fields: [companyId], references: [id])
+  companyId       Int
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
+
+enum SavingsStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  COMPLETED
+}
+
+model Income {
+  id        Int      @id @default(autoincrement())
+  amount    Float
+  taxableAmount Float?
+  gstRate    Float?
+  gstAmount  Float?
+  source    String?
+  date      DateTime
+  company   Company  @relation(fields: [companyId], references: [id])
+  companyId Int
+}
+
+model Expense {
+  id        Int      @id @default(autoincrement())
+  amount    Float
+  taxableAmount Float?
+  gstRate    Float?
+  gstAmount  Float?
+  category  String?
+  date      DateTime
+  company   Company  @relation(fields: [companyId], references: [id])
+  companyId Int
+}
+
+model Loan {
+  id          Int      @id @default(autoincrement())
+  title       String?
+  totalAmount Float
+  emiAmount   Float
+  status      String   @default("ACTIVE")
+  company     Company  @relation(fields: [companyId], references: [id])
+  companyId   Int
+}
+
+enum Role {
+  OWNER
+  ADMIN
+  STAFF
+  VIEWER
+}
+
+model RecurringTransaction {
+  id          Int            @id @default(autoincrement())
+  amount      Float
+  description String
+  type        RecurringType
+  frequency   String         @default("MONTHLY")
+  startDate   DateTime       @default(now())
+  nextDueDate DateTime
+  isActive    Boolean        @default(true)
+  totalAmount Float?         // Optional: for EMI tracking
+  paidAmount  Float?         // Optional: for EMI tracking
+  company     Company        @relation(fields: [companyId], references: [id])
+  companyId   Int
+}
+
+model BillReminder {
+  id          Int      @id @default(autoincrement())
+  amount      Float
+  title       String
+  dueDate     DateTime
+  isPaid      Boolean  @default(false)
+  category    String?
+  company     Company  @relation(fields: [companyId], references: [id])
+  companyId   Int
+}
+
+enum RecurringType {
+  SUBSCRIPTION
+  EMI
+  RENT
+  OTHER
+}

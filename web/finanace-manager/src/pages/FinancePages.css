@@ -1,0 +1,382 @@
+.finance-page {
+    animation: slideIn 0.4s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
+}
+
+.header-titles h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: -1px;
+    margin-bottom: 6px;
+}
+
+.header-titles p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.main-add-btn {
+    padding: 12px 24px;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+}
+
+.filters-bar {
+    margin-bottom: 24px;
+    display: flex;
+    gap: 16px;
+}
+
+.search-wrapper {
+    position: relative;
+    max-width: 400px;
+    width: 100%;
+}
+
+.search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+}
+
+.search-wrapper input {
+    width: 100%;
+    padding: 10px 14px 10px 42px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--white);
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.search-wrapper input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+.table-wrapper {
+    background: var(--white);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.data-table thead th {
+    background-color: var(--bg-main);
+    padding: 20px 24px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border);
+}
+
+.data-table tbody td {
+    padding: 20px 24px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.table-row-animate {
+    transition: background-color 0.2s ease;
+}
+
+.table-row-animate:hover td {
+    background-color: var(--bg-main);
+}
+
+.date-cell {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.source-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.indicator-success {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--success);
+}
+
+.indicator-danger {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--danger);
+}
+
+.amount-cell {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+}
+
+/* Icons and buttons */
+.btn-icon-danger {
+    color: var(--text-muted);
+    padding: 8px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.btn-icon-danger:hover {
+    color: var(--danger);
+    background-color: #fff1f2;
+    transform: scale(1.1);
+}
+
+/* Empty States */
+.empty-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 40px 0;
+}
+
+.empty-icon {
+    color: #e2e8f0;
+}
+
+.danger-icon {
+    color: #fee2e2;
+}
+
+/* Modals Refined */
+.glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-header {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.modal-header h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+
+.modal-header p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.form-group label {
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-icon svg {
+    position: absolute;
+    left: 14px;
+    color: #94a3b8;
+}
+
+.input-with-icon input {
+    width: 100%;
+    padding: 12px 14px 12px 42px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg-main);
+}
+
+.input-with-icon input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: white;
+}
+
+.loading-container {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    color: var(--text-muted);
+}
+
+.user-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar-sm {
+    width: 36px;
+    height: 36px;
+    background-color: #eef2ff;
+    color: var(--primary);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.role-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.role-badge.owner {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.role-badge.admin {
+    background-color: #e0f2fe;
+    color: #075985;
+}
+
+.role-badge.staff {
+    background-color: #f0fdf4;
+    color: #166534;
+}
+
+.role-badge.viewer {
+    background-color: #f1f5f9;
+    color: #475569;
+}
+
+.badge-me {
+    font-size: 0.65rem;
+    background-color: var(--primary);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-left: 8px;
+}
+
+.user-meta {
+    display: flex;
+    align-items: center;
+}
+
+.icon-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+@media (max-width: 768px) {
+    .header-titles h1 {
+        font-size: 1.75rem;
+    }
+
+    .filters-bar {
+        flex-direction: column;
+    }
+
+    .search-wrapper {
+        max-width: 100%;
+    }
+}
+
+/* EMI Progress Styles */
+.desc-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.main-desc {
+    font-weight: 700;
+    color: var(--text-main);
+    font-size: 1rem;
+}
+
+.emi-progress-container {
+    width: 200px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 4px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}

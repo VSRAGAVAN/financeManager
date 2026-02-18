@@ -1,0 +1,204 @@
+{
+    "info": {
+        "name": "Finance Manager API",
+        "description": "API collection for Finance Manager application with authentication, income, and expense management",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:5000",
+            "type": "string"
+        },
+        {
+            "key": "token",
+            "value": "",
+            "type": "string"
+        }
+    ],
+    "item": [
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "Register",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "if (pm.response.code === 200) {",
+                                    "    var jsonData = pm.response.json();",
+                                    "    pm.collectionVariables.set('token', jsonData.token);",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"SecurePassword123\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/auth/register",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "auth",
+                                "register"
+                            ]
+                        },
+                        "description": "Register a new user and company. Returns JWT token that is automatically saved to collection variables."
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Income",
+            "item": [
+                {
+                    "name": "Create Income",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"amount\": 5000,\n  \"source\": \"Salary\",\n  \"date\": \"2026-01-28T00:00:00.000Z\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/income",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "income"
+                            ]
+                        },
+                        "description": "Create a new income record for the authenticated user's company."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "List Incomes",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/income",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "income"
+                            ]
+                        },
+                        "description": "Get all income records for the authenticated user's company."
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Expense",
+            "item": [
+                {
+                    "name": "Create Expense",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"amount\": 250,\n  \"category\": \"Office Supplies\",\n  \"date\": \"2026-01-28T00:00:00.000Z\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/expense",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "expense"
+                            ]
+                        },
+                        "description": "Create a new expense record for the authenticated user's company."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "List Expenses",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/expense",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "expense"
+                            ]
+                        },
+                        "description": "Get all expense records for the authenticated user's company, ordered by date (most recent first)."
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Health Check",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        ""
+                    ]
+                },
+                "description": "Check if the API is running."
+            },
+            "response": []
+        }
+    ]
+}
